@@ -1,0 +1,170 @@
+# Exercise Title
+
+Short, action-oriented title. Example:  
+**Configure Application Log Rotation with Ansible**
+
+---
+
+## Objective
+
+In this exercise, you will:
+
+- State learning outcome 1  
+- State learning outcome 2  
+- State learning outcome 3  
+- (Optional) State learning outcome 4  
+
+Keep objectives short and clear.
+
+---
+
+## Scenario
+
+Describe a realistic situation (2–4 paragraphs max).  
+Explain *why* the task matters, not only the technical requirements.
+
+Example style:
+
+> Your operations team manages several RHEL systems running an internal application. Configuration inconsistencies have caused issues in the past, so leadership has asked you to automate this task using Ansible to ensure repeatability and compliance.
+
+Include any important context such as environment assumptions, hostnames, or constraints.
+
+---
+
+## Environment Information
+
+(Optional) Describe the lab environment if needed. Examples:
+
+- Control node hostname  
+- Managed hosts (e.g., `servera`, `serverb`)  
+- Inventory file location  
+- Pre-existing users, directories, or services  
+
+Example:
+
+> Use the inventory at `~/inventory`. Playbooks should be created in `~/ansible-workshop/`.
+
+---
+
+## Step 1 – Overview of What You Will Build
+
+Give a high-level explanation of the final deliverable.  
+Example:
+
+> You will create a playbook named `configure_logs.yml` that deploys a templated logrotate configuration for your application and enforces consistent permissions.
+
+---
+
+## Step 2 – Create the Playbook Skeleton
+
+Tell the learner to create a new file and add the initial structure.
+
+```yaml
+---
+- name: <short description>
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  vars:
+    # Optional variables here
+
+  tasks:
+    # Tasks added in later steps
+
+
+⸻
+
+Step 3 – Task Block A (Explain Purpose)
+
+Explain the purpose of this block in simple language.
+
+Example:
+
+In this step you will gather basic information about the target system that will guide later tasks.
+
+Provide a snippet:
+
+    - name: Gather information about the target path
+      ansible.builtin.stat:
+        path: /path/to/check
+      register: path_info
+
+
+⸻
+
+Step 4 – Task Block B (Explain Purpose)
+
+Introduce the next major functional block.
+
+Example:
+
+Now you will deploy a template that defines the required configuration.
+
+Provide a snippet:
+
+    - name: Deploy configuration template
+      ansible.builtin.template:
+        src: mytemplate.j2
+        dest: /etc/myapp/config.conf
+        owner: root
+        group: root
+        mode: '0644'
+
+Add as many “Task Blocks” as needed (C, D, etc.), each with:
+	•	Short explanation
+	•	Code snippet
+	•	Hints or reminders
+
+⸻
+
+Step 5 – Verification
+
+Explain exactly how the learner verifies success.
+
+Examples:
+
+ansible-navigator run configure_logs.yml -m stdout
+
+System-level checks:
+
+cat /etc/myapp/config.conf
+ls -l /etc/logrotate.d/myapp
+
+Explain what “success” looks like.
+
+⸻
+
+Step 6 – Idempotence Check
+
+This step is mandatory for all exercises.
+
+Tell the learner:
+
+Run the playbook again. All tasks should report changed=0. This confirms your automation is idempotent and safe to run repeatedly.
+
+⸻
+
+Step 7 – Optional Challenges
+
+Provide 2–4 stretch goals for advanced learners.
+
+Examples:
+	•	Add tags for selective execution (check, repair)
+	•	Convert the playbook into a role
+	•	Add validation using the validate: parameter
+	•	Generate a report using a Jinja2 template
+
+These are optional and should not block completion.
+
+⸻
+
+Instructor Notes (Optional / Internal Use Only)
+
+This section is optional and should be removed if students should not see it.
+
+Include:
+	•	Full reference solution
+	•	Common mistakes
+	•	Troubleshooting tips
+	•	Instructions for instructors running the lab
